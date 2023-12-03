@@ -9,6 +9,11 @@ func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) 
 		k.SetPendingExecution(ctx, elem)
 	}
 
+		// Buttons
+	cookbookList := k.GetAllCookbook(ctx)
+	genesis.CookbookList = append(genesis.CookbookList, cookbookList...)
+
+
 	// Set all the things
 	for _, elem := range genState.RecipeList {
 		k.SetRecipe(ctx, elem)
