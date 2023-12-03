@@ -13,6 +13,10 @@ func InitGenesis(ctx sdk.Context, k keeper.Keeper, genState types.GenesisState) 
 	cookbookList := k.GetAllCookbook(ctx)
 	genesis.CookbookList = append(genesis.CookbookList, cookbookList...)
 
+	// registering of typings
+func (a AppModuleBasic) RegisterInterfaces(reg cdctypes.InterfaceRegistry) {
+	types.RegisterInterfaces(reg)
+}
 
 	// Set all the things
 	for _, elem := range genState.RecipeList {
